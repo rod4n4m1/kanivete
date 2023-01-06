@@ -48,4 +48,4 @@ RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/s
 RUN curl -L0 https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz | tar xvz && \
     mv k9s /usr/bin && rm README.md LICENSE
 WORKDIR /root
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD ["sh"]
