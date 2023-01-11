@@ -1,4 +1,7 @@
 FROM ubuntu:jammy-20221130
+
+LABEL maintainer="Rod Anami <rod.anami@kyndryl.com>"
+
 RUN sed -i 's:^path-exclude=/usr/share/man:#path-exclude=/usr/share/man:' /etc/dpkg/dpkg.cfg.d/excludes
 # Update package repositories
 RUN apt-get update
