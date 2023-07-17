@@ -1,7 +1,5 @@
 #!/bin/bash
-export APP_NAME="kanivete"
-export VERSION="0.1.1"
-export USER_NAME="rod4n4m1"
+source building.env
 
 docker login
 docker build . -t $USER_NAME/$APP_NAME:$VERSION
