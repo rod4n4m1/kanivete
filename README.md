@@ -2,10 +2,10 @@
 
 ## SRE Public Tools - Kanivete
 
-* Version: `0.2.0`
+* Version: `0.3.0`
 * License: `MIT`
 * Description: `A swiss-army-knife debug container image to aid troubleshooting Kubernetes issues`
-* Base image: `Ubuntu Jammy (latest)`
+* Base image: `Ubuntu Noble (latest)`
 * Reference: [K8s doc](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/)
 
 ## Contents
@@ -16,7 +16,7 @@
 |:-------------|:----------------------------|:----------------------------|
 | building-example.txt | An example of the environmental variables required by the scripts located in this directory. Modify the values and rename it to `building.env`. | N/A |
 | docker-build.sh | A `shell script` that builds and pushes the **kanivete** image using *docker* CLI, requires environmental variables defined on a file named `building.env`. | `$ ./docker-build.sh`|
-| podman-build.sh | A `shell script` that builds and pushes the **kanivete** image using *podman* CLI, requires environmental variables defined on a file named `building.env` and the `podman-build` addon installed. | `$ ./docker-build.sh`|
+| podman-build.sh | A `shell script` that builds and pushes the **kanivete** image using *podman* CLI, requires environmental variables defined on a file named `building.env` and the `podman-build` addon installed. | `$ ./podman-build.sh`|
 | Dockerfile | A Docker-based script that holds the instructions to build a container image. | N/A |
 | | | |
 
@@ -42,10 +42,10 @@
 
 * Create a new pod based on the latest **kanivete** image:
 
-`kubectl run kanivete --image=rod4n4m1/kanivete:0.2.0 -- sleep 1d`
+`kubectl run kanivete --image=rod4n4m1/kanivete:0.3.0 -- sleep 1d`
 
 * Open sh terminal on the **kanivete** container:
 
 `kubectl exec -it kanivete -- sh`
 
-## End of Document
+## End of Doc

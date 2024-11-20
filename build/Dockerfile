@@ -1,4 +1,4 @@
-FROM ubuntu:jammy-20230624
+FROM ubuntu:noble
 
 LABEL maintainer="Rod Anami <rod.anami@kyndryl.com>"
 
@@ -29,7 +29,7 @@ RUN apt-get install --no-install-recommends -y \
         libpcap-dev \
         man \
         manpages-posix \
-        netcat \
+        netcat-traditional \
         openssl \
         openssh-client \
         tcpdump \
