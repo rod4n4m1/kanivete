@@ -34,7 +34,7 @@
 
 * Debug a running container by attaching **kanivete** to it as an ephemeral container:
 
-`kubectl debug -it nginx-deployment-6ddcfb665f-hcj4c --image=rod4n4m1/kanivete:0.2.0 --target=nginx`
+`kubectl debug -it nginx-deployment-6ddcfb665f-hcj4c --image=rod4n4m1/kanivete:0.3.0 --target=nginx`
 
 * Re-attach the ephemeral container if needed (to be implemented):
 
@@ -48,7 +48,7 @@
 
 * Open terminal shell on the **kanivete** pod:
 
-`kubectl exec -it kanivete -- sh`
+`kubectl exec -it kanivete -- bash`
 
 ### Container Runtime
 
@@ -61,7 +61,7 @@
 
 * Open terminal shell on the **kanivete** container:
 
-`docker exec -it kanivete sh`
-`podman exec -it kanivete sh`
+`docker exec -it kanivete bash`
+`podman exec -it kanivete bash`
 
 ## End of Doc
