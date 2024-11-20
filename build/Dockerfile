@@ -32,6 +32,7 @@ RUN apt-get install --no-install-recommends -y \
         netcat-traditional \
         openssl \
         openssh-client \
+        podman \
         tcpdump \
         traceroute \
         tree \
@@ -42,13 +43,13 @@ RUN apt-get install --no-install-recommends -y \
 RUN rm -rf /var/lib/apt/lists/* && \
     mv /usr/sbin/traceroute /usr/bin/traceroute
 # Install Docker CLI
-RUN curl -sLf https://download.docker.com/linux/ubuntu/dists/jammy/stable/binary-amd64/Release > /usr/bin/docker && \
+RUN curl -sLf https://download.docker.com/linux/ubuntu/dists/noble/stable/binary-amd64/Release > /usr/bin/docker && \
     chmod +x /usr/bin/docker
 # Install kubectl
 RUN curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" &&\
     mkdir -p /root/.kube
 # Install k9s
-RUN curl -L0 https://github.com/derailed/k9s/releases/download/v0.26.7/k9s_Linux_x86_64.tar.gz | tar xvz && \
+RUN curl -L0 https://github.com/derailed/k9s/releases/download/v0.32.7/k9s_Linux_x86_64.tar.gz | tar xvz && \
     mv k9s /usr/bin && rm README.md LICENSE
 WORKDIR /root
 CMD ["sh"]

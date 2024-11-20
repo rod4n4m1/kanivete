@@ -22,13 +22,15 @@
 
 ## Usage
 
-### Deploy a Target App
+### Kubernetes
+
+#### Deploy a Target App
 
 * You can deploy a standard nginx deployment for testing
 
 `kubectl apply -f usage/nginx-deployment.yaml`
 
-### Ephemeral Debug Container (K8s v1.25+)
+#### Ephemeral Debug Container (K8s v1.25+)
 
 * Debug a running container by attaching **kanivete** to it as an ephemeral container:
 
@@ -38,14 +40,28 @@
 
 `kubectl attach nginx-deployment-6ddcfb665f-hcj4c -c debugger-rpk9w -i -t`
 
-### Independent Debugger Pod
+#### Independent Debugger Pod
 
 * Create a new pod based on the latest **kanivete** image:
 
 `kubectl run kanivete --image=rod4n4m1/kanivete:0.3.0 -- sleep 1d`
 
-* Open sh terminal on the **kanivete** container:
+* Open terminal shell on the **kanivete** pod:
 
 `kubectl exec -it kanivete -- sh`
+
+### Container Runtime
+
+#### Using with Docker or Podman
+
+* Create a new container from the latest **kanivete** image:
+
+`docker run -d --name kanivete rod4n4m1/kanivete:0.3.0 sleep 1d`
+`podman run -d --name kanivete rod4n4m1/kanivete:0.3.0 sleep 1d`
+
+* Open terminal shell on the **kanivete** container:
+
+`docker exec -it kanivete sh`
+`podman exec -it kanivete sh`
 
 ## End of Doc
