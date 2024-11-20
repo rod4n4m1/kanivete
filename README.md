@@ -2,7 +2,7 @@
 
 ## SRE Public Tools - Kanivete
 
-* Version: `0.3.0`
+* Version: `0.3.1`
 * License: `MIT`
 * Description: `A swiss-army-knife debug container image to aid troubleshooting Kubernetes issues`
 * Base image: `Ubuntu Noble (latest)`
@@ -34,7 +34,7 @@
 
 * Debug a running container by attaching **kanivete** to it as an ephemeral container:
 
-`kubectl debug -it nginx-deployment-6ddcfb665f-hcj4c --image=rod4n4m1/kanivete:0.3.0 --target=nginx`
+`kubectl debug -it nginx-deployment-6ddcfb665f-hcj4c --image=rod4n4m1/kanivete:0.3.1 --target=nginx`
 
 * Re-attach the ephemeral container if needed (to be implemented):
 
@@ -44,7 +44,7 @@
 
 * Create a new pod based on the latest **kanivete** image:
 
-`kubectl run kanivete --image=rod4n4m1/kanivete:0.3.0 -- sleep 1d`
+`kubectl run kanivete --image=rod4n4m1/kanivete:0.3.1 -- sleep 1d`
 
 * Open terminal shell on the **kanivete** pod:
 
@@ -56,8 +56,8 @@
 
 * Create a new container from the latest **kanivete** image:
 
-`docker run -d --name kanivete rod4n4m1/kanivete:0.3.0 sleep 1d`
-`podman run -d --name kanivete rod4n4m1/kanivete:0.3.0 sleep 1d`
+`docker run -d --name kanivete rod4n4m1/kanivete:0.3.1 sleep 1d`
+`podman run -d --name kanivete rod4n4m1/kanivete:0.3.1 sleep 1d`
 
 * Open terminal shell on the **kanivete** container:
 

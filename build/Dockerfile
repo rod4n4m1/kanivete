@@ -5,17 +5,9 @@ LABEL maintainer="Rod Anami <rod.anami@kyndryl.com>"
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
+        ca-certificates \
         curl \
-        tar \
-        wget
-
-# Configure curl to use system certificates
-RUN mkdir -p /etc/ssl/certs && echo <<EOF > .curlrc
-capath=/etc/ssl/certs/
-cacert=/etc/ssl/certs/ca-certificates.crt
-EOF
-# Download and install CA certificates
-RUN wget --no-check-certificate https://curl.se/ca/cacert.pem && cp ./cacert.pem /etc/ssl/certs/ca-certificates.crt
+        tar
 
 # Install Docker CLI
 RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-27.3.1.tgz | tar xvz
@@ -68,18 +60,19 @@ RUN apt-get install --no-install-recommends -y \
         traceroute \
         tree \
         ngrep \
-        vim \
-        wget
-# Configure tcpdump, traceroute, and curl
-RUN rm -rf /var/lib/apt/lists/* && \
-    mv /usr/sbin/traceroute /usr/bin/traceroute &&\
-    mkdir -p /etc/ssl/certs
+        vim && \
+    rm -rf /var/lib/apt/lists/*
+
+# Clean up
+RUN apt-get autoremove && apt-get clean
+
+# Configure tcpdump and traceroute
+RUN mv /usr/sbin/traceroute /usr/bin/traceroute
 
 # Copy binaries from builder stage
 COPY --from=builder /docker/docker /usr/bin/docker
 COPY --from=builder /kubectl /usr/bin/kubectl
 COPY --from=builder /k9s /usr/bin/k9s
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
 # Create .kube directory
 RUN mkdir -p /root/.kube
